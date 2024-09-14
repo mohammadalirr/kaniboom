@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+  },
+  "include": [
+    "./*.ts",
+    "types/express.d.ts"
+  ], // Include all .ts files in the root and any custom type declarations
+  "exclude": [
+    "node_modules",
+    "dist"
+  ] // Exclude node_modules and dist directories
+}
