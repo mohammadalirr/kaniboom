@@ -304,7 +304,7 @@ const submitForm = async (form, endpoint) => {
 
   try {
     const formData = new FormData(form);
-    const response = await fetch(`http://127.0.0.1:3000/forms/${endpoint}`, {
+    const response = await fetch(`https://kaniboom.liara.run/forms/${endpoint}`, {
       method: "POST",
       body: formData,
     });

@@ -74,18 +74,18 @@ formRouter.post("/plan", upload.single("file"), async (req, res) => {
         res.status(200).send("اطلاعات با موفقیت ثبت شد.");
       } catch (err) {
         console.error("Error saving form:", err);
-        res.status(500).send("Error saving form.");
+        res.status(500).send("خطا در ذخیره اطلاعات.");
       }
     });
 
     uploadStream.on("error", (err) => {
       console.error("Error uploading file:", err);
-      res.status(500).send("Error uploading file.");
+      res.status(500).send("خطا در آپلود فایل.");
     });
   } catch (err) {
     console.error("Error handling file upload:", err);
-    res.status(500).send("Error handling file upload.");
-  } // const uploadStream = gfs.openUploadStream(file.originalname, {
+    res.status(500).send("خطا در مدیریت آپلود فایل.");
+  }
 });
 
 formRouter.post("/contact", upload.none(), async (req, res) => {
@@ -184,24 +184,41 @@ formRouter.post(
     const { name, phone, email, how, applicant, members } = req.body;
 
     const files = req.files as { [fieldname: string]: Express.Multer.File[] };
-    const file1 = files && files['introduction'] ? files['introduction'][0] : null;
-    const file2 = files && files['student_card'] ? files['student_card'][0] : null;
+    const file1 =
+      files && files["introduction"] ? files["introduction"][0] : null;
+    const file2 =
+      files && files["student_card"] ? files["student_card"][0] : null;
+
     if (file1 && file2) {
-      return res.status(400).send('لطفا فقط یک فیلد را برای آپلود فایل انتخاب کنید.');
+      return res
+        .status(400)
+        .send("لطفا فقط یک فیلد را برای آپلود فایل انتخاب کنید.");
     }
-  
+
     const file = file1 || file2;
 
-
     if (!file) {
-      return res.status(400).send("No file uploaded.");
+      return res.status(400).send("فایلی آپلود نشده است.");
+    }
+
+    const allowedMimeTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+      "image/gif",
+      "application/pdf",
+      "application/zip",
+    ];
+
+    if (!allowedMimeTypes.includes(file.mimetype)) {
+      return res.status(400).send("فرمت فایل مجاز نیست");
     }
 
     const emailExist = await MasirForm.findOne({ email: email });
     const mobileExist = await MasirForm.findOne({ phone: phone });
     if (mobileExist || emailExist) {
       console.log("Email or mobile already exists");
-      return res.status(409).send("پیش از این ثبت نام کرده اید.");
+      return res.status(409).send("پیش از این ثبت نام کرده‌اید.");
     }
 
     try {
@@ -246,7 +263,7 @@ formRouter.post(
     } catch (err) {
       console.error("Error handling file upload:", err);
       res.status(500).send("Error handling file upload.");
-    } // const uploadStream = gfs.openUploadStream(file.originalname, {
+    }
   }
 );
 

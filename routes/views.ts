@@ -35,6 +35,12 @@ viewRouter.get("/bootcamp-management", (req, res) => {
 viewRouter.get("/bootcamp-mineralprocessing", (req, res) => {
   res.render("_bootcamp-mineralprocessing");
 });
+viewRouter.get("/events", (req, res) => {
+  res.render("_events");
+});
+viewRouter.get("/events/sadaf", (req, res) => {
+  res.render("_sadaf");
+});
 
 
 

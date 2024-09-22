@@ -5,6 +5,7 @@ import InternForm from "../../models/forms/Intern";
 import ProductForm from "../../models/forms/Product";
 import MasirForm from "../../models/forms/Masir";
 import mongoose from "mongoose";
+import User from "../../models/User";
 
 const apiFormRouter = express.Router();
 
@@ -13,6 +14,9 @@ apiFormRouter.get("/:endpoint", async (req, res) => {
 
   let DataModel: mongoose.Model<any>;
   switch (endpoint) {
+    case "users":
+      DataModel = User;
+      break;
     case "contact":
       DataModel = ContactForm;
       break;
@@ -61,6 +65,9 @@ apiFormRouter.delete("/:endpoint", async (req, res) => {
   const { endpoint } = req.params;
   let DataModel: mongoose.Model<any>;
   switch (endpoint) {
+    case "users":
+      DataModel = User;
+      break;
     case "contact":
       DataModel = ContactForm;
       break;
@@ -109,7 +116,9 @@ apiFormRouter.get("/download/:fileId", (req, res) => {
     return res.status(400).send("Invalid file ID.");
   }
 
-  const downloadStream = gfs!.openDownloadStream(new mongoose.Types.ObjectId(fileId));
+  const downloadStream = gfs!.openDownloadStream(
+    new mongoose.Types.ObjectId(fileId)
+  );
 
   downloadStream.on("data", (chunk: any) => {
     res.write(chunk);
@@ -125,14 +134,12 @@ apiFormRouter.get("/download/:fileId", (req, res) => {
   });
 });
 
-
 // apiFormRouter.get('/download/:filename', async (req, res) => {
 //   const gfs = req.gfs;
 //   const filename = req.params.filename;
 
 //   const files = await gfs!.find({ filename }).toArray();
 //   console.log(files);
-  
 
 //   if (!files || files.length === 0) {
 //     return res.status(404).json({ message: 'File not found' });

@@ -78,7 +78,7 @@
               <a href="about">درباره ما</a>
             </li>
             <li>
-              <a href="/">رویدادها</a>
+              <a href="/events">رویدادها</a>
               <ul>
                 <li>
                   <a href="/">کانی‌شو</a>
@@ -91,6 +91,9 @@
                 </li>
                 <li>
                   <a href="/">ریتکس</a>
+                </li>
+                <li>
+                  <a href="/events/sadaf">صدف</a>
                 </li>
               </ul>
             </li>
@@ -117,9 +120,9 @@
             <li class="active">
               <a href="register">ارسال طرح و ایده</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="/">تماس با ما</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </nav>
@@ -154,7 +157,7 @@
               <a href="about">درباره ما</a>
             </li>
             <li>
-              <a href="/">رویدادها</a>
+              <a href="/events">رویدادها</a>
               <ul>
                 <li>
                   <a href="/">کانی‌شو</a>
@@ -167,6 +170,9 @@
                 </li>
                 <li>
                   <a href="/">ریتکس</a>
+                </li>
+                <li>
+                  <a href="/events/sadaf">صدف</a>
                 </li>
               </ul>
             </li>
@@ -193,9 +199,9 @@
             <li class="active">
               <a href="register">ارسال طرح و ایده</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="/">تماس با ما</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </nav>
@@ -378,7 +384,14 @@
                       name="file"
                       id="file"
                       required
+                      accept=".jpg,.jpeg,.png,.gif,.zip,.pdf"
                     />
+                    <span style="font-size: 10px; color: #f06221"
+                      >فرمت های پشتیبانی شده:
+                      <span dir="ltr"
+                        >.jpg .jpeg .png .gif .zip .pdf</span
+                      ></span
+                    >
                   </div>
                 </div>
 
@@ -486,9 +499,15 @@
                       required
                     >
                       <option hidden value="">انتخاب کنید</option>
-                      <option value="زمین شناسی و اکتشاف">زمین شناسی و اکتشاف</option>
-                      <option value="استخراج و بهره برداری">استخراج و بهره برداری</option>
-                      <option value="فرآوری مواد معدنی">فرآوری مواد معدنی</option>
+                      <option value="زمین شناسی و اکتشاف">
+                        زمین شناسی و اکتشاف
+                      </option>
+                      <option value="استخراج و بهره برداری">
+                        استخراج و بهره برداری
+                      </option>
+                      <option value="فرآوری مواد معدنی">
+                        فرآوری مواد معدنی
+                      </option>
                       <option value="صنایع پایین دستی">صنایع پایین دستی</option>
                       <option value="پشتیبانی و HSE">پشتیبانی و HSE</option>
                     </select>

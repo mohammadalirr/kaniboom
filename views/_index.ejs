@@ -117,7 +117,7 @@
               <a href="about">درباره ما</a>
             </li>
             <li>
-              <a href="/">رویدادها</a>
+              <a href="/events">رویدادها</a>
               <ul>
                 <li>
                   <a href="/">کانی‌شو</a>
@@ -130,6 +130,9 @@
                 </li>
                 <li>
                   <a href="/">ریتکس</a>
+                </li>
+                <li>
+                  <a href="/events/sadaf">صدف</a>
                 </li>
               </ul>
             </li>
@@ -156,9 +159,9 @@
             <li>
               <a href="register">ارسال طرح و ایده</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="/">تماس با ما</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </nav>
@@ -193,7 +196,7 @@
               <a href="about">درباره ما</a>
             </li>
             <li>
-              <a href="/">رویدادها</a>
+              <a href="/events">رویدادها</a>
               <ul>
                 <li>
                   <a href="/">کانی‌شو</a>
@@ -206,6 +209,9 @@
                 </li>
                 <li>
                   <a href="/">ریتکس</a>
+                </li>
+                <li>
+                  <a href="/events/sadaf">صدف</a>
                 </li>
               </ul>
             </li>
@@ -232,9 +238,9 @@
             <li>
               <a href="register">ارسال طرح و ایده</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="/">تماس با ما</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </nav>
@@ -262,23 +268,31 @@
                 data-easeout="Power3.easeInOut"
                 data-masterspeed="1000"
               >
-                <!-- Main image -->
+                <!-- sadaf slide -->
                 <img
-                  src="../img/slider/03.jpg"
+                  src="../img/slider/sadaf.jpg"
                   alt=""
                   data-bgposition="center center"
-                  data-bgfit="cover"
+                  data-bgfit="content"
                   data-bgrepeat="no-repeat"
                   class="rev-slidebg"
                 />
+                <div
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: 100px;
+                    background-color: rgba(0, 0, 0, 0.3);
+                    z-index: 100;
+                    transition: all 0.3s;
+                  "
+                ></div>
                 <div class="section-content btn-slider">
-                  <a target="_blank" href="bootcamp-product-management"
+                  <a target="_blank" href="/events/sadaf"
                     ><p class="btn btn-shadow-2">ثبت‌نام</p></a
                   >
                 </div>
               </li>
-
-              <!-- Slide 2 -->
               <li
                 data-transition="slotzoom-horizontal"
                 data-slotamount="7"
@@ -287,6 +301,40 @@
                 data-masterspeed="1000"
               >
                 <!-- Main image -->
+                <img
+                  src="../img/kanicamp/kanicamp.jpg"
+                  alt=""
+                  data-bgposition="center center"
+                  data-bgfit="content"
+                  data-bgrepeat="no-repeat"
+                  class="rev-slidebg"
+                />
+                <div
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: 100px;
+                    background-color: rgba(0, 0, 0, 0.3);
+                    z-index: 100;
+                    transition: all 0.3s;
+                  "
+                ></div>
+
+                <div class="section-content btn-slider">
+                  <a target="_blank" href="bootcamp-mineralprocessing"
+                    ><p class="btn btn-shadow-2">ثبت‌نام</p></a
+                  >
+                </div>
+              </li>
+
+              <!-- Slide 2 -->
+              <!-- <li
+                data-transition="slotzoom-horizontal"
+                data-slotamount="7"
+                data-easein="Power3.easeInOut"
+                data-easeout="Power3.easeInOut"
+                data-masterspeed="1000"
+              >
                 <img
                   src="../img/slider/kaniamooz.jpg"
                   alt=""
@@ -300,17 +348,16 @@
                     ><p class="btn btn-shadow-2">ثبت‌نام</p></a
                   >
                 </div>
-              </li>
+              </li> -->
 
               <!-- Slide 2 -->
-              <li
+              <!-- <li
                 data-transition="slotzoom-horizontal"
                 data-slotamount="7"
                 data-easein="Power3.easeInOut"
                 data-easeout="Power3.easeInOut"
                 data-masterspeed="1000"
               >
-                <!-- Main image -->
                 <img
                   src="../img/slider/04.jpg"
                   alt=""
@@ -324,17 +371,16 @@
                     ><p class="btn btn-shadow-2">ثبت‌نام</p></a
                   >
                 </div>
-              </li>
+              </li> -->
 
               <!-- Slide 2 -->
-              <li
+              <!-- <li
                 data-transition="slotzoom-horizontal"
                 data-slotamount="7"
                 data-easein="Power3.easeInOut"
                 data-easeout="Power3.easeInOut"
                 data-masterspeed="1000"
               >
-                <!-- Main image -->
                 <img
                   src="../img/slider/02.jpg"
                   alt=""
@@ -348,7 +394,7 @@
                     ><p class="btn btn-shadow-2">ارسال طرح و ایده</p></a
                   >
                 </div>
-              </li>
+              </li> -->
 
               <!-- Slide 1 -->
               <li
@@ -785,7 +831,7 @@
 
                 <!-- Objects -->
 
-                <div class="object-label" style="left: 43.7%; top: 30.1%">
+                <!-- <div class="object-label" style="left: 43.7%; top: 30.1%">
                   <div class="object-info in">
                     <h3 class="object-title text-center">کانی‌بوم</h3>
                     <p
@@ -796,7 +842,7 @@
                       آجودانیه، خیابان صمیع
                     </p>
                   </div>
-                </div>
+                </div> -->
 
                 <div class="object-label" style="left: 45.7%; top: 31.1%">
                   <div class="object-info">
@@ -831,10 +877,10 @@
                   class="col-address col-base col-md-4 col-sm-12 col-xs-12 text-justify"
                   style="float: right; direction: rtl"
                 >
-                  <i class="fa fa-map-marker text-primary"></i>
+                  <!-- <i class="fa fa-map-marker text-primary"></i>
                   آدرس: تهران، آجودانیه، خیابان صمیع<br />
                   <i class="fa fa-phone text-primary"></i> تلفن: ۷۱۰۵۷۸۷۹-۰۲۱
-                  <br />
+                  <br /> -->
                   <i class="fa fa-envelope text-primary"></i> ایمیل:
                   info@kaniboom.ir<br />
                   <i class="fa fa-instagram text-primary"></i> اینستاگرام:
