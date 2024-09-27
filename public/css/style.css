@@ -2108,12 +2108,12 @@ img.mfp-img{
 .clients-list .client{
   display: inline-block;
   vertical-align: middle;
-  padding: 3.8em 1.95em 0;
+  padding: .2em .01em;
   margin:0;
 }
 
 .clients-list .client img{
-  opacity: 0.7;
+  opacity: 0.8;
   display: block;
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -2710,8 +2710,8 @@ img.mfp-img{
   padding: 0;
   border-radius: 0.25em 0 0 0.25em;
   overflow: hidden;
-  background-size: cover;
   background-position: 50% 0;
+  background-size: cover;
 }
 
 .blog-thumbnail-img img{
@@ -3085,4 +3085,11 @@ img.mfp-img{
 }
 .orng {
   color: #f06221;
+}
+.logos {
+  border-radius: 5px;
+  width: auto;
+  height: 140px;
+  background-color: white;
+
 }

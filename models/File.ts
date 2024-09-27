@@ -1,14 +1,6 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-interface IFile extends Document {
-  filename: string;
-  email: string;
-  mobile: string;
-  contentType: string;
-  fileId: Schema.Types.ObjectId; // ID مربوط به فایل در GridFS
-}
-
-const fileSchema = new Schema<IFile>({
+const fileSchema = new Schema({
   filename: { type: String, required: true },
   email: { type: String, required: true },
   mobile: { type: String, required: true },
@@ -16,5 +8,5 @@ const fileSchema = new Schema<IFile>({
   fileId: { type: Schema.Types.ObjectId, required: true },
 });
 
-const File = mongoose.model<IFile>("File", fileSchema);
+const File = mongoose.model("File", fileSchema);
 export default File;

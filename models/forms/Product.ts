@@ -1,19 +1,7 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-interface ProductForm extends Document {
-      name: string;
-      email: string;
-      phone: string;
-      acquaintance: string;
-      job_status: string;
-      education: string;
-      who: string;
-      company: string;
-      members: number;
-      factor: string;
-}
 
-const productFormSchema = new Schema<ProductForm>({
+const productFormSchema = new Schema({
     name: {type: "string", required: true},
     email: {type: "string", required: true},
     phone: {type: "string", required: true},
@@ -26,7 +14,7 @@ const productFormSchema = new Schema<ProductForm>({
     factor: {type: "string"}
 });
 
-const ProductForm = mongoose.model<ProductForm>(
+const ProductForm = mongoose.model(
   "form_product",
   productFormSchema
 );

@@ -1,16 +1,7 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-interface InternForm extends Document {
-  name: string;
-  phone: string;
-  email: string;
-  field: string;
-  stage: string;
-  university: string;
-  motivation: string;
-}
 
-const internFormSchema = new Schema<InternForm>({
+const internFormSchema = new Schema({
   name: { type: String, required: true },
   phone: { type: String, required: true },
   email: { type: String, required: true },
@@ -18,10 +9,9 @@ const internFormSchema = new Schema<InternForm>({
   stage: { type: String, required: true },
   university: { type: String, required: true },
   motivation: { type: String, required: true },
-
 });
 
-const InternForm = mongoose.model<InternForm>(
+const InternForm = mongoose.model(
   "form_intern",
   internFormSchema
 );

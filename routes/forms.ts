@@ -89,7 +89,7 @@ formRouter.post("/plan", upload.single("file"), async (req, res) => {
 });
 
 formRouter.post("/contact", upload.none(), async (req, res) => {
-  const { name, email, phone, company, message } = req.body;
+  const { name, email, phone, company, message, page } = req.body;
   try {
     const form = new ContactForm({
       name,
@@ -97,6 +97,7 @@ formRouter.post("/contact", upload.none(), async (req, res) => {
       phone,
       company,
       message,
+      page,
     });
     await form.save();
     res.status(200).send("اطلاعات با موفقیت ثبت شد. ");

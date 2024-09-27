@@ -1,21 +1,7 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-interface PlanForm extends Document {
-  title: string;
-  name: string;
-  team: string;
-  members: string;
-  phone: string;
-  email: string;
-  city: string;
-  planPosition: string;
-  subject: string;
-  status: string;
-  introduction: string;
-  fileId: Schema.Types.ObjectId;
-}
 
-const planFormSchema = new Schema<PlanForm>({
+const planFormSchema = new Schema({
   title: { type: String, required: true },
   name: { type: String, required: true },
   team: { type: String },
@@ -30,5 +16,5 @@ const planFormSchema = new Schema<PlanForm>({
   fileId: { type: Schema.Types.ObjectId, required: true },
 });
 
-const PlanForm = mongoose.model<PlanForm>("form_plan", planFormSchema);
+const PlanForm = mongoose.model("form_plan", planFormSchema);
 export default PlanForm;

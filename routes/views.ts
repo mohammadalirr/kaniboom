@@ -5,6 +5,12 @@ const viewRouter = express.Router();
 viewRouter.get("/", (req, res) => {
   res.render("_index");
 });
+viewRouter.get("/alishahi", (req, res) => {
+  res.render("_alishahi");
+});
+viewRouter.get("/ebadi", (req, res) => {
+  res.render("_ebadi");
+});
 viewRouter.get("/about", (req, res) => {
   res.render("_about");
 });
@@ -41,7 +47,5 @@ viewRouter.get("/events", (req, res) => {
 viewRouter.get("/events/sadaf", (req, res) => {
   res.render("_sadaf");
 });
-
-
 
 export default viewRouter;

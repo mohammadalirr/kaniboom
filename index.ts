@@ -19,12 +19,12 @@ const app = express();
 
 const allowedOrigins = [
   // customenv
-  "https://kaniboom-panel.liara.run",
-  "https://kaniboom.liara.run",
-  "https://kaniboom.ir",
+  // "https://kaniboom-panel.liara.run",
+  // "https://kaniboom.liara.run",
+  // "https://kaniboom.ir",
 
-  // "http://localhost:5173",
-  // "http://localhost:3000",
+  "http://localhost:5173",
+  "http://localhost:3000",
 ];
 
 app.use(cors({
@@ -118,8 +118,8 @@ app.use(morgan("tiny"));
 
 app.set("view engine", "ejs");
 //customenv
-app.set("views", path.join(__dirname, "../views"));
-app.use(express.static(path.join(__dirname, "../public")));
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", viewRouter);
 app.use("/forms", cors(), formRouter);
