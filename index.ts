@@ -8,10 +8,12 @@ import viewRouter from "./routes/views";
 import formRouter from "./routes/forms";
 import authRouter from "./routes/api/auth";
 import apiFormRouter from "./routes/api/forms";
+import apiUserRouter from "./routes/api/users";
 import path from "path";
 import fastAuth from "./middlewares/fastAuth";
 import verifyRouter from "./routes/api/verify";
 import exportRouter from "./routes/api/exports";
+import apiContentRouter from "./routes/api/contents";
 
 const cors = require("cors");
 const morgan = require("morgan");
@@ -70,7 +72,7 @@ mongoose
   .then(() => {
     console.log("Connected to MongoDB");
   })
-  .catch((err) => console.log("Error connecting", err));
+  .catch((err: any) => console.log("Error connecting", err));
 
 const connection = mongoose.connection;
 let gfs: GridFSBucket;
@@ -96,7 +98,7 @@ declare global {
 
 app.use(cookieParser());
 
-app.use((req, res, next) => {
+app.use((req, res: any, next) => {
   if (!gfs) {
     return res.status(500).send("GridFSBucket not initialized.");
   }
@@ -123,11 +125,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", viewRouter);
 app.use("/forms", cors(), formRouter);
-// API
 
+// API
 app.use("/kb-api", verifyRouter);
 app.use("/kb-api/auth", authRouter);
 app.use("/kb-api/forms", fastAuth, apiFormRouter);
+app.use("/kb-api/users", fastAuth, apiUserRouter);
+app.use("/kb-api/contents", apiContentRouter);
 app.use("/kb-api/export", fastAuth, exportRouter);
 
 app.listen(process.env.PORT, () => {

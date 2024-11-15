@@ -6,10 +6,14 @@ import ProductForm from "../../models/forms/Product";
 import MasirForm from "../../models/forms/Masir";
 import mongoose from "mongoose";
 import User from "../../models/User";
+import MineralForm from "../../models/forms/Mineral";
+import SadafForm from "../../models/forms/Sadaf";
+import YazdForm from "../../models/forms/Yazd";
+import Form from "../../models/forms/Form";
 
 const apiFormRouter = express.Router();
 
-apiFormRouter.get("/:endpoint", async (req, res) => {
+apiFormRouter.get("/:endpoint", async (req, res: any) => {
   const { endpoint } = req.params;
 
   let DataModel: mongoose.Model<any>;
@@ -31,6 +35,21 @@ apiFormRouter.get("/:endpoint", async (req, res) => {
       break;
     case "product-bootcamp": // Fixed typo
       DataModel = ProductForm;
+      break;
+    case "sadaf": // Fixed typo
+      DataModel = SadafForm;
+      break;
+    case "yazd": // Fixed typo
+      DataModel = YazdForm;
+      break;
+    case "mineral": // Fixed typo
+      DataModel = MineralForm;
+      break;
+    case "mineral": // Fixed typo
+      DataModel = MineralForm;
+      break;
+    case "dynamic": // Fixed typo
+      DataModel = Form;
       break;
     default:
       return res.status(404).json({ error: "Invalid endpoint" }); // Return a response
@@ -61,7 +80,7 @@ apiFormRouter.get("/:endpoint", async (req, res) => {
   }
 });
 
-apiFormRouter.delete("/:endpoint", async (req, res) => {
+apiFormRouter.delete("/:endpoint", async (req, res: any) => {
   const { endpoint } = req.params;
   let DataModel: mongoose.Model<any>;
   switch (endpoint) {
@@ -83,6 +102,16 @@ apiFormRouter.delete("/:endpoint", async (req, res) => {
     case "product-bootcamp": // Fixed typo
       DataModel = ProductForm;
       break;
+    case "sadaf": // Fixed typo
+      DataModel = SadafForm;
+      break;
+    case "yazd": // Fixed typo
+      DataModel = YazdForm;
+      break;
+    case "mineral": // Fixed typo
+      DataModel = MineralForm;
+      break;
+
     default:
       return res.status(404).json({ error: "Invalid endpoint" }); // Return a response
   }
@@ -107,7 +136,7 @@ apiFormRouter.delete("/:endpoint", async (req, res) => {
   }
 });
 
-apiFormRouter.get("/download/:fileId", (req, res) => {
+apiFormRouter.get("/download/:fileId", (req, res: any) => {
   const gfs = req.gfs;
   const { fileId } = req.params;
 

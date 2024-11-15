@@ -23,7 +23,7 @@ const jwt = require("jsonwebtoken");
 //   res.status(200).json({ message: "Token is valid" });
 // });
 
-authRouter.post("/verify", async (req, res) => {
+authRouter.post("/verify", async (req, res: any) => {
   const token = req.cookies.token;
 
   if (token) {
@@ -61,14 +61,14 @@ authRouter.post("/verify", async (req, res) => {
         { id: user._id, username: user.username, role: user.role },
         process.env.JWT_KEY,
         {
-          expiresIn: "1h",
+          expiresIn: "8h",
         }
       );
 
       res.cookie("token", token, {
         httpOnly: true,
         secure: true,
-        expires: new Date(Date.now() + 3600000 * 6),
+        expires: new Date(Date.now() + 3600000 * 8),
         sameSite: "lax",
       });
 
@@ -82,7 +82,7 @@ authRouter.post("/verify", async (req, res) => {
   }
 });
 
-authRouter.post("/create", fastAuth, async (req, res) => {
+authRouter.post("/create", fastAuth, async (req, res: any) => {
   try {
     const { username, password, role } = req.body;
     const user = await User.findOne({ username });

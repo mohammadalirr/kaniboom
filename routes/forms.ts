@@ -5,13 +5,17 @@ import InternForm from "../models/forms/Intern";
 import ProductForm from "../models/forms/Product";
 import MasirForm from "../models/forms/Masir";
 import multer from "multer";
+import SadafForm from "../models/forms/Sadaf";
+import MineralForm from "../models/forms/Mineral";
+import YazdForm from "../models/forms/Yazd";
+import Form from "../models/forms/Form";
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 const formRouter = express.Router();
 
-formRouter.post("/plan", upload.single("file"), async (req, res) => {
+formRouter.post("/plan", upload.single("file"), async (req, res: any) => {
   const {
     title,
     name,
@@ -105,7 +109,55 @@ formRouter.post("/contact", upload.none(), async (req, res) => {
     res.status(500).send("Error saving form");
   }
 });
-formRouter.post("/intern", upload.none(), async (req, res) => {
+formRouter.post("/sadaf", upload.none(), async (req, res) => {
+  const { name, email, phone, company, message } = req.body;
+  try {
+    const form = new SadafForm({
+      name,
+      email,
+      phone,
+      company,
+      message,
+    });
+    await form.save();
+    res.status(200).send("اطلاعات با موفقیت ثبت شد. ");
+  } catch (error) {
+    res.status(500).send("Error saving form");
+  }
+});
+formRouter.post("/yazd", upload.none(), async (req, res) => {
+  const { name, email, phone, company, message } = req.body;
+  try {
+    const form = new YazdForm({
+      name,
+      email,
+      phone,
+      company,
+      message,
+    });
+    await form.save();
+    res.status(200).send("اطلاعات با موفقیت ثبت شد. ");
+  } catch (error) {
+    res.status(500).send("Error saving form");
+  }
+});
+formRouter.post("/mineral", upload.none(), async (req, res) => {
+  const { name, email, phone, company, message } = req.body;
+  try {
+    const form = new MineralForm({
+      name,
+      email,
+      phone,
+      company,
+      message,
+    });
+    await form.save();
+    res.status(200).send("اطلاعات با موفقیت ثبت شد. ");
+  } catch (error) {
+    res.status(500).send("Error saving form");
+  }
+});
+formRouter.post("/intern", upload.none(), async (req, res: any) => {
   const { name, email, phone, field, stage, university, motivation } = req.body;
 
   const phoneCheck = await InternForm.findOne({ phone });
@@ -131,7 +183,7 @@ formRouter.post("/intern", upload.none(), async (req, res) => {
     res.status(500).send("Error saving form");
   }
 });
-formRouter.post("/product", upload.none(), async (req, res) => {
+formRouter.post("/product", upload.none(), async (req, res: any) => {
   const {
     name,
     email,
@@ -178,7 +230,7 @@ formRouter.post("/product", upload.none(), async (req, res) => {
 formRouter.post(
   "/masir",
   upload.fields([{ name: "introduction" }, { name: "student_card" }]),
-  async (req, res) => {
+  async (req, res: any) => {
     console.log(req.body, "FORM");
     console.log(req.file, "FILE");
 
@@ -267,5 +319,95 @@ formRouter.post(
     }
   }
 );
+
+/**
+ * @Dynamic routes
+ */
+formRouter.post("/:page", upload.single("upload"), async (req, res: any) => {
+  const { page } = req.params;
+  const {
+    type,
+    name,
+    birth,
+    code,
+    duty,
+    marital,
+    education,
+    field,
+    univercity,
+    semester,
+    phone,
+    email,
+    history,
+    more,
+  } = req.body;
+
+  const file = req.file;
+console.log(type, page);
+
+  const user = await Form.findOne({
+    type,
+    page,
+    $or: [{ email }, { code }, { phone }],
+  });
+  if (user) {
+    return res.status(409).send("چنین اطلاعاتی پیش از این ثبت شده است.");
+  }
+
+  try {
+    let uploadId;
+
+    // بررسی وجود فایل و آپلود آن
+    if (file) {
+      const uploadStream = req.gfs!.openUploadStream(file.originalname, {
+        contentType: file.mimetype,
+        metadata: {
+          type,
+          page,
+          email,
+          phone,
+        },
+      });
+
+      uploadStream.end(file.buffer);
+
+      // استفاده از Promise برای اطمینان از اتمام آپلود
+      await new Promise<void>((resolve, reject) => {
+        uploadStream.on("finish", () => {
+          uploadId = uploadStream.id;
+          resolve();
+        });
+        uploadStream.on("error", (err) => reject(err));
+      });
+    }
+
+    // ذخیره فرم در دیتابیس با در نظر گرفتن آپلود یا بدون آن
+    const form = new Form({
+      type,
+      name,
+      birth,
+      code,
+      duty,
+      marital,
+      education,
+      field,
+      univercity,
+      semester,
+      phone,
+      email,
+      history,
+      more,
+      page,
+      upload: uploadId, // اگر فایلی وجود نداشته باشد، مقدار null ذخیره می‌شود
+    });
+
+    await form.save();
+    res.status(200).send("اطلاعات با موفقیت ذخیره شد.");
+    console.log(req.body);
+  } catch (err) {
+    res.status(500).send("internal server error: " + err);
+  }
+});
+
 
 export default formRouter;

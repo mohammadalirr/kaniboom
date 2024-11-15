@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      سازندگاه کسب و کارهای نوآورانه کانی بوم | <%= pageData.head[0].html.replace(/<\/?[^>]+(>|$)/g, "") %>
+    </title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../img/logo/logo_kaniboom_ficon.jpg" />
+    <link rel="apple-touch-icon" href="../img/logo/logo_kaniboom_ficon.jpg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../img/logo/logo_kaniboom_ficon.jpg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../img/logo/logo_kaniboom_ficon.jpg"
+    />
+
+    <!-- Styles -->
+    <link href="../css/style.css" rel="stylesheet" media="screen" />
+  </head>
+  <body>
+    <!-- <h1> -->
+
+    <!-- </h1> -->
+    <!-- Loader -->
+    <div class="loader">
+      <div class="page-lines">
+        <div class="container">
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+          </div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+          </div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="loader-brand">
+        <div class="sk-folding-cube">
+          <div class="sk-cube1 sk-cube"></div>
+          <div class="sk-cube2 sk-cube"></div>
+          <div class="sk-cube4 sk-cube"></div>
+          <div class="sk-cube3 sk-cube"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header id="top" class="header-inner">
+      <div class="brand-panel" style="background: none">
+        <a href="#top" class="brand js-target-scroll hidden-xs hidden-sm">
+          <img src="../img/logo/logo_kaniboom.png" />
+        </a>
+        <a href="#top" class="brand js-target-scroll hidden-md hidden-lg">
+          <img src="../img/logo/logo_kaniboom.png" />
+        </a>
+      </div>
+
+      <nav class="navbar-desctop visible-md visible-lg">
+        <div class="container">
+          <a href="#top" class="brand js-target-scroll">
+            <img src="../img/logo/logo_kaniboom.png" />
+          </a>
+          <ul class="nav navbar-desctop-menu">
+            <li>
+              <a href="/">صفحه اصلی</a>
+            </li>
+            <li>
+              <a href="/about">درباره ما</a>
+            </li>
+            <li>
+              <a href="/events">رویدادها</a>
+            </li>
+            <li>
+              <a href="/kanicamp">کانی بوم آکادمی</a>
+              <ul>
+                <li>
+                  <a href="/kanicamp">کانی‌کمپ</a>
+                </li>
+                <li>
+                  <a href="/boomcamp">بوم‌کمپ</a>
+                </li>
+                <!-- <li>
+                  <a href="/">کانی کورس</a>
+                </li>
+                <li>
+                  <a href="kaniamoz">کانی آموز</a>
+                </li> -->
+              </ul>
+            </li>
+            <li>
+              <a href="/news">اخبار</a>
+            </li>
+            <li>
+              <a href="/register">ارسال طرح و ایده</a>
+            </li>
+            <!-- <li>
+              <a href="/">تماس با ما</a>
+            </li> -->
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Navigation Mobile -->
+
+      <nav class="nav navbar-mobile">
+        <a href="#top" class="brand js-target-scroll">
+          <img src="../img/logo/logo_kaniboom.png" />
+        </a>
+
+        <!-- Navbar Collapse -->
+
+        <button
+          type="button"
+          class="navbar-toggle collapsed"
+          data-toggle="collapse"
+          data-target="#navbar-mobile"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+          <ul class="navbar-nav-mobile">
+            <li>
+              <a href="/">صفحه اصلی</a>
+            </li>
+            <li>
+              <a href="/about">درباره ما</a>
+            </li>
+            <li>
+              <a href="/events">رویدادها</a>
+            </li>
+            <li>
+              <a href="/kanicamp">کانی بوم آکادمی</a>
+              <ul>
+                <li>
+                  <a href="/kanicamp">کانی‌کمپ</a>
+                </li>
+                <li>
+                  <a href="/boomcamp">بوم‌کمپ</a>
+                </li>
+                <!-- <li>
+                  <a href="/">کانی کورس</a>
+                </li>
+                <li>
+                  <a href="kaniamoz">کانی آموز</a>
+                </li> -->
+              </ul>
+            </li>
+            <li>
+              <a href="/news">اخبار</a>
+            </li>
+            <li>
+              <a href="/register">ارسال طرح و ایده</a>
+            </li>
+            <!-- <li>
+              <a href="/">تماس با ما</a>
+            </li> -->
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Layout -->
+
+    <div class="layout">
+      <!-- sec-1 / head  -->
+      <% if (pageData.head[0].html) { %>
+      <main
+        id="head"
+        class="main main-inner bg-innovations"
+        data-stellar-background-ratio="0.6"
+        style="
+          background-position: 50% 0px;
+          background: url(<%= BASE_URL + "/kb-api/contents/imgs/" + pageData.head[0].bg_img %>) 50% 0 no-repeat;
+          background-size: cover;
+          "
+      >
+        <div class="container">
+          <header class="main-header text-center">
+            <img
+              src="<%=BASE_URL + "/kb-api/contents/imgs/" + pageData.head[0].logo_img %>"
+              style="width: 150px; margin-bottom: 30px"
+            />
+            <h1><%- pageData.head[0].html %></h1>
+            <h3
+              class="col-about-title text-center"
+              style="direction: rtl; margin-top: 15px"
+            >
+              <span
+                class="text-primary"
+                style="display: block; padding-bottom: 10px"
+                ><i class="fa fa-calendar"></i> <%- pageData.head[0].date %>
+              </span>
+            </h3>
+          </header>
+        </div>
+
+        <div class="page-lines">
+          <div class="container">
+            <div class="col-line col-xs-4">
+              <div class="line"></div>
+            </div>
+            <div class="col-line col-xs-4">
+              <div class="line"></div>
+            </div>
+            <div class="col-line col-xs-4">
+              <div class="line"></div>
+              <div class="line"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <% } else { %> <%null%> <% } %>
+
+      <br><br><br>
+
+      <div class="content">
+
+        <!-- sec-2 / summary  -->
+        <% if (pageData.summary[0].html) { %>
+        <section id="about" class="about">
+          <div class="container">
+            <div class="entry">
+              <div class="col-md-6">
+                <img
+                  src="<%=BASE_URL + "/kb-api/contents/imgs/" + pageData.summary[0].img %>"
+                  class="img-responsive"
+                  style="margin-bottom: 10px; width: 100%"
+                />
+              </div>
+              <div class="col-md-6" dir="rtl"><%- pageData.summary[0].html %></div>
+            </div>
+          </div>
+        </section>
+
+        <% } else {%> <%null%> <%}%>
+        <br><br><br>
+
+        <!-- sec-3 / roadmap  -->
+         <% if (pageData.roadmap[0].title) { %> <% const roadmap = pageData.roadmap[0].html.split("<p>/next/</p>") %>
+        <section id="services" class="section Instructor">
+          <div class="container">
+            <header class="section-header">
+              <h2 class="section-title"><%- pageData.roadmap[0].title %></h2>
+              <strong class="fade-title-left"
+                ><%- pageData.roadmap[0].bg_text %></strong
+              >
+            </header>
+            <div
+              class="col-md-12 section-content"
+              style="
+                display: flex;
+                justify-content: center;
+                margin-top: 4em;
+                direction: ltr;
+              "
+            >
+              <div class="timeline">
+                <div class="outer">
+                  <% roadmap.forEach((i, index) => { %>
+                  <div class="card" style="direction: rtl;" key="<%= index %>">
+                    <div class="info" >
+                      <h3 class="title"></h3>
+                      <div style=" padding: 0 25px;">
+
+                        <p style="min-width: 300px;"><%- i %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <% }) %>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <% } else {%> <%null%> <%}%>
+        <br><br><br>
+
+        <!-- sec-4 / blocks  -->
+
+        <% if (pageData.blocks[0].title) { %>
+         <% pageData.blocks.forEach((i, index) => { %>
+          <section id="services" class="section courses" key="<%= index %>">
+            <header class="text-center">
+              <strong class="fade-title-left"><%- i.bg_text %></strong>
+            </header>
+            <div class="container">
+              <div class="col-base bootcamp-item text-right">
+                <%- i.html %>
+              </div>
+
+            </div>
+          </section>
+         <% }) %>
+        <% } else {null}%>
+        <br><br><br>
+        <!-- sec-7 / persons  -->
+         <% if (pageData.persons[0].title) { %>
+          <% pageData.persons.forEach((i, index) => { %>
+
+            <section id="services" class="section Instructor" style="margin-top: 50px;">
+              <div class="container">
+                <header class="section-header">
+                  <h2 class="section-title">
+                    <%- i.title %>
+                  </h2>
+                  <strong class="fade-title-left">
+                    <%- i.bg_text %>
+                  </strong>
+                </header>
+    
+                <div class="col-base col-sm-12 col-md-12">
+                  <% i.profiles.forEach((ii, index) => { %>
+                    <% if (ii.name) { %>
+                    <div class="col-sm-12 col-md-4">
+                      <div class="bootcamp-item text-center">
+                        <img style="width: 150px; height: 150px;" src="<%=BASE_URL + "/kb-api/contents/imgs/" + ii.img %>"/>
+                        <h4 class="text-center" style="direction: rtl">
+                          <span class="text-primary" style="display: block"
+                            >
+                            <%= ii.name %>
+                            </span
+                          > 
+                          <%= ii.desc %>
+                          <br />
+                          <%= ii.inc %>
+                        </h4>
+                      </div>
+                    </div>
+                    <% } %>
+                  <% }) %>
+                </div>
+              </div>
+            </section>
+  
+          <% }) %>
+          <% } else {null} %>
+          <br><br><br>
+
+        <!-- sec-8 / lecturers  -->
+
+        <!-- sec-10 / audience  -->
+
+
+        <!-- sec-11 / cost  -->
+
+        <!-- sec-12 / topics  -->
+
+
+        <!-- sec-13 / organizers  -->
+         <% if (pageData.gallery[0].title) { %>
+          <% pageData.gallery.forEach((i, index) => { %>
+
+            <section id="clients" class="organizers section" style="margin-top: 50px;">
+              <div class="container">
+                <header class="section-header">
+                  <h2 class="section-title">
+                    <%= i.title %>
+                  </h2>
+                  <strong class="fade-title-left">
+                    <%= i.bg_text %>
+                  </strong>
+                </header>
+                <div class="section-content text-center">
+                  <ul class="clients-list">
+                    <% i.imgs.forEach((ii, index) => { %>
+                      <% if(ii) { %>
+                      <li class="client">
+                        <!-- <a target="_blank" href="#"> -->
+                          <img
+                            src="<%=BASE_URL + "/kb-api/contents/imgs/" + ii %>"
+                            style="width: <%= i.size === 'sm' ? '120px' : '400px' %>; height: <%= i.size === 'sm' ? '120px' : '275px' %>; border-radius: 10px"
+                             />
+                            <!--</a> -->
+                      </li>
+                      <% } else {null} %>
+                   <% }) %>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          <% }) %>
+
+        <% } else {null} %>
+        <br><br><br>
+        <!-- sec-14 / location  -->
+         <% if (pageData.location[0].city) { %>
+          <section id="objects" class="section location">
+            <div class="container">
+              <header class="section-header">
+                <h2 class="section-title">
+                  مکان برگزاری
+                </h2>
+                <strong class="fade-title-left">Location</strong>
+              </header>
+              <div class="section-content">
+                <div class="objects">
+                  <img class="img-responsive" src="../img/map.png" />
+  
+                  <!-- Objects -->
+  
+                  <div class="object-label"
+                   style="right: <%= pageData.location[0].coord.x - 2 %>%; bottom: <%= pageData.location[0].coord.y + 1 %>% ">
+                    <div class="object-info in">
+                      <h3 class="object-title text-center">
+                        <%- pageData.location[0].city %>
+                      </h3>
+                      <p
+                        class="object-content text-center"
+                        style="direction: rtl"
+                      >
+                        <%= pageData.location[0].desc %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+         <% } else {null} %>
+
+         <br><br><br>
+
+        <!-- sec-15 / appendix  -->
+        <!-- Contacts -->
+        <% if (pageData.form[0].inputs.length > 0) { %>
+        <section id="contacts" class="contacts section">
+          <div class="container">
+            <header class="section-header">
+              <h2 class="section-title">
+                <%- pageData.form[0].title %>
+
+              </h2>
+              <strong class="fade-title-left">
+                <%- pageData.form[0].bg_text %>
+
+              </strong>
+            </header>
+            <div class="section-content">
+              <div class="row-base row">
+                <p
+                  class="col-address col-base col-md-4 col-sm-12 col-xs-12 text-justify"
+                  style="float: right; direction: rtl"
+                >
+                  <!-- <i class="fa fa-map-marker text-primary"></i>
+                  آدرس: تهران، خیابان شهید بهشتی، خیابان داریوش، پلاک۷<br />
+                  <i class="fa fa-phone text-primary"></i> تلفن: ۷۱۰۵۷۸۷۹-۰۲۱ -->
+                  <br />
+                  <i class="fa fa-envelope text-primary"></i> ایمیل:
+                  info@kaniboom.ir<br />
+                  <i class="fa fa-instagram text-primary"></i> اینستاگرام:
+                  kaniboom.ir<br />
+                  <i class="fa fa-linkedin text-primary"></i> لینکدین: kaniboom
+                </p>
+                <div
+                  class="col-base col-md-8 col-sm-12 col-xs-12"
+                  style="float: right; direction: rtl"
+                >
+                  <form class="<%= pageData.name %>-form">
+                    <div class="row-field row">
+                        <% pageData.form[0].inputs.filter((i, index) => inputsData.find((ii) => ii.value.name === i).value.type !== "select" && i !== "more" ).forEach((i, index) => { %>
+                          <div
+                            class="col-field col-md-4 col-sm-6 col-xs-6"
+                            style="float: right"
+                          >
+                            <div class="form-group">
+                              <input
+                                name="<%= inputsData.find((ii) => ii.value.name === i).value.name %>"
+                                type="<%= inputsData.find((ii) => ii.value.name === i).value.type %>"
+                                class="form-control"
+                                placeholder="<%= inputsData.find((ii) => ii.value.name === i).label %>"
+                                required
+                              />
+                            </div>
+                          </div>
+                        <% }) %>
+                        <% pageData.form[0].inputs.filter((i, index) => inputsData.find((ii) => ii.value.name === i).value.type === "select" ).forEach((i, index) => { %>
+                          <div
+                          class="col-field col-md-4 col-sm-6 col-xs-6"
+                          style="float: right"
+                        >
+                          <div class="form-group">
+                            <select
+                              name="<%= inputsData.find((ii) => ii.value.name === i).value.name %>"
+                              class="form-control"
+                              placeholder="<%= inputsData.find((ii) => ii.value.name === i).label %>"
+                              required
+                            >
+                            <option value="" hidden><%= inputsData.find((ii) => ii.value.name === i).label %></option>
+                            <% inputsData.find((ii) => ii.value.name === i).value.data.forEach((ii) => { %>
+                              <option value="<%= ii %>"><%= ii %></option>
+                            <% } ) %>
+                            </select>
+                          </div>
+                        </div>
+                        <% }) %>
+
+                    </div>
+                    <% if (pageData.form[0].inputs.includes("more")) { %>
+                      <div class="row">
+                        <div
+                          class="col-field col-xs-12 col-md-8"
+                          style="float: right"
+                        >
+                          <textarea
+                            class="form-control"
+                            name="more"
+                            placeholder="توضیحات بیشتر"
+                          ></textarea>
+                        </div>
+                      </div>
+                    <% } else {null} %>
+                    <div class="form-submit text-right">
+                      <div class="col-field col-sm-12" style="padding-top: 10px;">
+                        <div class="form-group">
+                          <div class="fulfilled"></div>
+                          <div class="rejected"></div>
+                        </div>
+                      </div>
+                      <br> <br>
+                      <button type="submit" class="btn btn-shadow-2 wow swing">
+                        ارسال
+                      </button>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <% } else {null} %>
+
+        <br><br><br>
+
+
+        <footer id="footer" class="footer">
+          <div class="container">
+            <div class="row-base row">
+              <div class="col-base text-left-md col-md-4">
+                <a href="#" class="brand">
+                  <img src="../img/logo/logo_kaniboom.png" />
+                </a>
+              </div>
+              <div class="text-center-md col-base col-md-4">
+                <a href="tel:09387536548" class="author-link">
+                  طراحی وب سایت توسط کانی بوم
+                </a>
+              </div>
+              <div
+                class="text-right-md col-base col-md-4"
+                style="direction: rtl"
+              >
+                © کلیه حقوق وب سایت متعلق به سازندگاه کسب‌وکارهای نوآورانه کانی
+                بوم می باشد.
+              </div>
+            </div>
+          </div>
+        </footer>
+
+        <div class="page-lines">
+          <div class="container">
+            <div class="col-line col-xs-4">
+              <div class="line"></div>
+            </div>
+            <div class="col-line col-xs-4">
+              <div class="line"></div>
+            </div>
+            <div class="col-line col-xs-4">
+              <div class="line"></div>
+              <div class="line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SCRIPTS -->
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/smoothscroll.js"></script>
+    <script src="../js/jquery.validate.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/jquery.stellar.min.js"></script>
+    <script src="../js/jquery.magnific-popup.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+
+    <!-- SLIDER REVOLUTION -->
+    <script src="../js/rev-slider/jquery.themepunch.tools.min.js"></script>
+    <script src="../js/rev-slider/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS   -->
+    <script src="../js/rev-slider/revolution.extension.actions.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.carousel.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.kenburn.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.layeranimation.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.migration.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.navigation.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.parallax.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.slideanims.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.video.min.js"></script>
+    <script src="../js/interface.js"></script>
+    <script>
+      const form = document.querySelector(".<%= pageData.name %>-form");
+      const recCheck = document.querySelector("#is_recomended");
+      const orgCheck = document.querySelector("#is_org");
+      const recField = document.querySelector("#rec-field");
+      const orgField = document.querySelector("#org-field");
+      const recInputs = document.querySelector(".rec-input");
+      const orgInputs = document.querySelectorAll(".org-input");
+
+
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        submitForm(form, "<%= pageData.name %>", "<%= pageData.type %>");
+      };
+    </script>
+  </body>
+</html>

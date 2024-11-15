@@ -6,10 +6,12 @@ import PlanForm from "../../models/forms/Plan";
 import ProductForm from "../../models/forms/Product";
 import mongoose from "mongoose";
 import XLSX from "xlsx";
+import SadafForm from "../../models/forms/Sadaf";
+import MineralForm from "../../models/forms/Mineral";
 
 const exportRouter = express.Router();
 
-exportRouter.get("/:endpoint", async (req, res) => {
+exportRouter.get("/:endpoint", async (req, res: any) => {
   const { endpoint } = req.params;
 
   let DataModel: mongoose.Model<any>;
@@ -29,6 +31,13 @@ exportRouter.get("/:endpoint", async (req, res) => {
     case "product-bootcamp":
       DataModel = ProductForm;
       break;
+    case "sadaf": // Fixed typo
+      DataModel = SadafForm;
+      break;
+    case "mineral": // Fixed typo
+      DataModel = MineralForm;
+      break;
+
     default:
       return res.status(404).json({ error: "Invalid endpoint" }); // Return a response
   }

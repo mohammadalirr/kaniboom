@@ -1,4 +1,6 @@
 import express from "express";
+import Page from "../models/contents/Page";
+import { inputsData } from "../static/multiSelectData";
 
 const viewRouter = express.Router();
 
@@ -41,11 +43,79 @@ viewRouter.get("/bootcamp-management", (req, res) => {
 viewRouter.get("/bootcamp-mineralprocessing", (req, res) => {
   res.render("_bootcamp-mineralprocessing");
 });
-viewRouter.get("/events", (req, res) => {
-  res.render("_events");
-});
+// viewRouter.get("/events", (req, res) => {
+//   res.render("_events");
+// });
 viewRouter.get("/events/sadaf", (req, res) => {
   res.render("_sadaf");
+});
+viewRouter.get("/events/sadaf-yazd-mine", (req, res) => {
+  res.render("_sadaf-yazd-mine");
+});
+// viewRouter.get("/news", (req, res) => {
+//   res.render("_news");
+// });
+viewRouter.get("/news/mine-expo", (req, res) => {
+  res.render("_mine-expo");
+});
+viewRouter.get("/news/conmine", (req, res) => {
+  res.render("_conmine");
+});
+
+/**
+ * @Dynamic routes
+ */
+viewRouter.get("/news", (req, res) => {
+  Page.find({ type: "news" })
+    .then((contents) => {
+      console.log(contents); // داده‌ها به صورت یک آرایه نمایش داده می‌شوند
+      res.render("_news", { contents, BASE_URL: process.env.BASE_URL });
+    })
+    .catch((err) => {
+      console.error("Error fetching news:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+viewRouter.get("/events", (req, res) => {
+  Page.find({ type: "events" })
+    .then((contents) => {
+
+      console.log(contents); // داده‌ها به صورت یک آرایه نمایش داده می‌شوند
+      res.render("_events", { contents, BASE_URL: process.env.BASE_URL });
+    })
+    .catch((err) => {
+      console.error("Error fetching news:", err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+viewRouter.get("/news/:page", async (req, res) => {
+  const page = req.params.page;
+  try {
+    const pageData = await Page.findOne({ name: page });
+    res.render("page", {
+      pageData,
+      inputsData,
+      BASE_URL: process.env.BASE_URL,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+});
+viewRouter.get("/events/:page", async (req, res) => {
+  const page = req.params.page;
+  try {
+    const pageData = await Page.findOne({ name: page });
+    res.render("page", {
+      pageData,
+      inputsData,
+      BASE_URL: process.env.BASE_URL,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
 });
 
 export default viewRouter;
