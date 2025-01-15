@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="کانی بوم، شتابدهنده تخصصی معدن و صنایع معدنی است که با هدفتوسعه و ترويج نوآوری،  ایجاد زیرساخت‌های فناورانه  و حمایت از کسب‌وکارهای نوپا در بخش معدن و صنایع معدنی شکل گرفته است. تمرکز فعالیت این شتابدهنده بر تکمیل زنجیره ارزش مواد معدنی و هوشمندسازی معادن است."
+    />
+    <meta name="keywords" content="کانی بوم, شتابدهنده, سازندگاه, معدن" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>سازندگاه کسب و کارهای نوآورانه کانی بوم</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../img/logo/logo_kaniboom_ficon.jpg" />
+    <link rel="apple-touch-icon" href="../img/logo/logo_kaniboom_ficon.jpg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../img/logo/logo_kaniboom_ficon.jpg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../img/logo/logo_kaniboom_ficon.jpg"
+    />
+
+    <!-- Styles -->
+    <link href="../css/style.css" rel="stylesheet" media="screen" />
+  </head>
+  <body>
+    <!-- Loader -->
+    <div class="loader">
+      <div class="page-lines">
+        <div class="container">
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+          </div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+          </div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="loader-brand">
+        <div class="sk-folding-cube">
+          <div class="sk-cube1 sk-cube"></div>
+          <div class="sk-cube2 sk-cube"></div>
+          <div class="sk-cube4 sk-cube"></div>
+          <div class="sk-cube3 sk-cube"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+
+    <header id="top" class="header-home">
+      <div class="brand-panel">
+        <a href="#top" class="brand js-target-scroll hidden-xs hidden-sm">
+          <img src="../img/logo/logo_kaniboom.png" />
+        </a>
+        <a href="#top" class="brand js-target-scroll hidden-md hidden-lg">
+          <img src="../img/logo/logo_kaniboom.png" />
+        </a>
+        <div class="brand-name hidden-xs">KANI BOOM</div>
+        <div class="slide-number">
+          <span class="current-number text-primary"
+            >0<span class="count">1</span></span
+          >
+          <sup
+            ><span class="delimiter">/</span> 0<span class="total-count"></span
+          ></sup>
+        </div>
+      </div>
+      <div class="vertical-panel"></div>
+      <div class="vertical-panel-content">
+        <div class="vertical-panel-info">
+          <div class="vertical-panel-title">Kani Boom</div>
+          <div class="line"></div>
+        </div>
+        <ul class="social-list">
+          <li>
+            <a href="tel:<%=pageData.phone%>" class="fa fa-phone">
+              <span style="padding-left: 5px; font-size: 18px" class="tel-text">
+                <%=pageData.phone%>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto: <%=pageData.email%>" class="fa fa-envelope"></a>
+          </li>
+          <li>
+            <a
+              href=<%=pageData.instagram%>
+              class="fa fa-instagram"
+              target="_blank"
+            ></a>
+          </li>
+          <li>
+            <a
+              href=<%=pageData.linkedin%>
+              class="fa fa-linkedin"
+              target="_blank"
+            ></a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Navigation Desctop -->
+
+      <nav class="navbar-desctop visible-md visible-lg">
+        <div class="container">
+          <a href="#top" class="brand js-target-scroll">
+            <img src="../img/logo/logo_kaniboom.png" />
+          </a>
+          <ul class="nav navbar-desctop-menu">
+            <li class="active">
+              <a href="#top">صفحه اصلی</a>
+            </li>
+            <li>
+              <a href="about">درباره ما</a>
+            </li>
+            <li>
+              <a href="/events">رویدادها</a>
+            </li>
+            <li>
+              <a href="#">کانی بوم آکادمی</a>
+              <ul>
+                <li>
+                  <a href="kanicamp">کانی‌کمپ</a>
+                </li>
+                <li>
+                  <a href="boomcamp">بوم‌کمپ</a>
+                </li>
+                <!-- <li>
+                  <a href="/">کانی کورس</a>
+                </li>
+                <li>
+                  <a href="kaniamoz">کانی آموز</a>
+                </li> -->
+              </ul>
+            </li>
+            <li>
+              <a href="/news">اخبار</a>
+            </li>
+            <li>
+              <a href="register">ارسال طرح و ایده</a>
+            </li>
+            <!-- <li>
+              <a href="/">تماس با ما</a>
+            </li> -->
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Navigation Mobile -->
+
+      <nav class="nav navbar-mobile">
+        <a href="#top" class="brand js-target-scroll">
+          <img src="../img/logo/logo_kaniboom.png" />
+        </a>
+
+        <!-- Navbar Collapse -->
+
+        <button
+          type="button"
+          class="navbar-toggle collapsed"
+          data-toggle="collapse"
+          data-target="#navbar-mobile"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+          <ul class="navbar-nav-mobile">
+            <li class="active">
+              <a href="#top">صفحه اصلی</a>
+            </li>
+            <li>
+              <a href="about">درباره ما</a>
+            </li>
+            <li>
+              <a href="/events">رویدادها</a>
+            </li>
+            <li>
+              <a href="#">کانی بوم آکادمی</a>
+              <ul>
+                <li>
+                  <a href="kanicamp">کانی‌کمپ</a>
+                </li>
+                <li>
+                  <a href="boomcamp">بوم‌کمپ</a>
+                </li>
+                <!-- <li>
+                  <a href="/">کانی کورس</a>
+                </li>
+                <li>
+                  <a href="/">کانی آموز</a>
+                </li> -->
+              </ul>
+            </li>
+            <li>
+              <a href="/news">اخبار</a>
+            </li>
+            <li>
+              <a href="register">ارسال طرح و ایده</a>
+            </li>
+            <!-- <li>
+              <a href="/">تماس با ما</a>
+            </li> -->
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Layout -->
+
+    <div class="layout">
+      <!-- Home -->
+
+      <main class="main">
+        <div class="arrow-left"></div>
+        <div class="arrow-right"></div>
+
+        <!-- Start revolution slider -->
+
+        <div class="rev_slider_wrapper">
+          <div id="rev_slider" class="rev_slider" style="max-height: 100%; margin: 0 auto">
+            <ul>
+              <% if (pageData.slides[0]) { %>
+                <% pageData.slides.forEach((i, index) => { %>
+
+                  <!-- Slide -1 -->
+
+                     <li
+                       data-transition="slotzoom-horizontal"
+                       data-slotamount="7"
+                       data-easein="Power3.easeInOut"
+                       data-easeout="Power3.easeInOut"
+                       data-masterspeed="1000"
+                     >
+
+                       <!-- conmine slide -->
+                       <img
+                       src="<%=BASE_URL + "/contents/imgs/" + i.img %>"
+                         alt=""
+                         data-bgposition="center center"
+                         data-bgfit="cover"
+                         data-bgrepeat="no-repeat"
+                         class="rev-slidebg"
+                       />
+                       <div
+                         style="
+                           position: absolute;
+                           width: 100%;
+                           height: 100px;
+                           background-color: rgba(0, 0, 0, 0.3);
+                           z-index: 100;
+                           transition: all 0.3s;
+                         "
+                       ></div>
+
+   
+                       <div class="section-content btn-slider">
+                         <a target="_blank" href=<%=i.link%>
+                           ><p class="btn btn-shadow-2">مشاهده</p></a
+                         >
+                       </div>
+                     </li>
+                <% }) %>
+              <% } else { %> <%null%> <% } %>
+
+              <!-- Slide 0 -->
+            </ul>
+          </div>
+        </div>
+      </main>
+
+      <div class="content">
+        <!-- About  -->
+
+        <% if (pageData.stats) { %>
+
+          <section id="about" class="about section">
+            <div class="container">
+              <header class="section-header">
+                <h2 class="section-title">
+                  درباره <span class="text-primary">کانی بوم</span>
+                </h2>
+                <strong class="fade-title-left">About</strong>
+              </header>
+              <div class="section-content">
+                <div class="row-base row">
+                  <div class="col-base col-sm-12 col-md-4" style="float: right">
+                    <div class="col-about-info">
+                      <h3
+                        class="col-about-title text-right"
+                        style="direction: rtl"
+                      >
+                        <span
+                          class="text-primary"
+                          style="display: block; padding-bottom: 10px"
+                        >
+                          کانی بوم</span
+                        >
+                        شتابدهنده تخصصی حوزه معدن و صنایع معدنی
+                      </h3>
+                      <p
+                        class="text-justify"
+                        style="font-size: 14px; padding-left: 0px; direction: rtl"
+                      >
+                        <%=pageData.intro%>
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="col-base col-sm-12 col-md-8"
+                    style="direction: rtl; float: right; display: flex"
+                  >
+                    <div
+                      class="col-about-spec col-sm-12 col-md-6"
+                      style="direction: rtl; float: right"
+                    >
+                      <div class="service-item text-center">
+                        <img alt="" src="../img/img-icon/aboutus-01.png" />
+                        <h4
+                          class="text-center"
+                          style="font-size: 14px; direction: rtl"
+                        >
+                          <span
+                            class="text-primary"
+                            style="display: block; font-size: 24px">
+                            <%=pageData.stats.reqs%> درخواست‌ 
+                          </span>
+                          برای شرکت در برنامه شتابدهی
+                        </h4>
+                      </div>
+                      <div class="service-item text-center">
+                        <img alt="" src="../img/img-icon/aboutus-02.png" />
+                        <h4
+                          class="text-center"
+                          style="font-size: 14px; direction: rtl"
+                        >
+                          <span
+                            class="text-primary"
+                            style="display: block; font-size: 24px"
+                            ><%=pageData.stats.preboosts%> استارت‌آپ‌</span
+                          >پیش‌شتابدهی‌شده
+                        </h4>
+                      </div>
+                      <div class="service-item text-center">
+                        <img alt="" src="../img/img-icon/aboutus-03.png" />
+                        <h4
+                          class="text-center"
+                          style="font-size: 14px; direction: rtl"
+                        >
+                          <span
+                            class="text-primary"
+                            style="display: block; font-size: 24px"
+                            ><%=pageData.stats.boosts%> استارت‌آپ‌</span
+                          >شتابدهی‌شده
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="col-about-spec col-sm-12 col-md-6"
+                      style="direction: rtl; float: right"
+                    >
+                      <div class="service-item text-center">
+                        <img alt="" src="../img/img-icon/aboutus-04.png" />
+                        <h4
+                          class="text-center"
+                          style="font-size: 14px; direction: rtl"
+                        >
+                          <span
+                            class="text-primary"
+                            style="display: block; font-size: 24px"
+                            ><%=pageData.stats.funds%> میلیاردتومان</span
+                          >سرمایه تأمین‌شده برای استارت‌آپ‌ها
+                        </h4>
+                      </div>
+                      <div class="service-item text-center">
+                        <img alt="" src="../img/img-icon/aboutus-05.png" />
+                        <h4
+                          class="text-center"
+                          style="font-size: 14px; direction: rtl"
+                        >
+                          <span
+                            class="text-primary"
+                            style="display: block; font-size: 24px"
+                            ><%=pageData.stats.jobs%> شغل</span
+                          >در نتیجه حمایت از تیم‌های استارت‌آپی
+                        </h4>
+                      </div>
+                      <div class="service-item text-center">
+                        <img alt="" src="../img/img-icon/aboutus-06.png" />
+                        <h4
+                          class="text-center"
+                          style="font-size: 14px; direction: rtl"
+                        >
+                          <span
+                            class="text-primary"
+                            style="display: block; font-size: 24px"
+                            ><%=pageData.stats.tuts%> نفر ساعت</span
+                          >آموزش و منتورينگ تیم‌های استارت‌آپی
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="section-content"
+                  style="text-align: center; margin-top: 4em"
+                >
+                  <a href="about" class="btn btn-shadow-2"
+                    >مطالعه بیشتر<i class="icon-next"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </section>
+        <% } else { %> <%null%> <% } %>
+
+
+        <!-- Portfo -->
+
+        <% if (pageData.portfo_img) { %>
+          <section id="objects" class="objects section">
+            <div class="container">
+              <header class="section-header">
+                <h2 class="section-title">
+                  پورتفو<span class="text-primary"> کانی بوم</span>
+                </h2>
+                <strong class="fade-title-left hidden-xs">Portfo</strong>
+              </header>
+              <div class="section-content">
+                <img  src="<%=BASE_URL + "/contents/imgs/" + pageData.portfo_img %>" style="width: 100%" />
+              </div>
+            </div>
+          </section>
+        <% } else { %> <%null%> <% } %>
+
+
+          <!-- Objects -->
+
+          <section id="objects" class="objects section">
+            <div class="container">
+              <header class="section-header">
+                <h2 class="section-title">
+                  آدرس<span class="text-primary"> کانی بوم</span>
+                </h2>
+                <strong class="fade-title-left hidden-xs">Location</strong>
+              </header>
+              <div class="section-content">
+                <div class="objects">
+                  <img alt="" class="img-responsive" src="../img/map.png" />
+
+                  <div class="object-label" style="left: 45.7%; top: 31.1%">
+                    <div class="object-info">
+                      <h3 class="object-title text-center">کانی بوم</h3>
+                      <p
+                        class="object-content text-center"
+                        style="direction: rtl"
+                      >
+                        <i class="fa fa-map-marker text-primary"></i>
+                      <%=pageData.loc_address%>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+        <!-- Footer -->
+
+        <footer id="footer" class="footer">
+          <div class="container">
+            <div class="row-base row">
+              <div class="col-base text-left-md col-md-4">
+                <a href="#" class="brand">
+                  <img src="../img/logo/logo_kaniboom.png" />
+                </a>
+              </div>
+              <div class="text-center-md col-base col-md-4">
+                <a href="tel:09387536548" class="author-link">
+                  طراحی وب سایت توسط کانی بوم
+                </a>
+              </div>
+              <div
+                class="text-right-md col-base col-md-4"
+                style="direction: rtl"
+              >
+                © کلیه حقوق وب سایت متعلق به سازندگاه کسب‌وکارهای نوآورانه کانی
+                بوم می باشد.
+              </div>
+            </div>
+          </div>
+        </footer>
+
+        <!-- Lines -->
+
+        <div class="page-lines">
+          <div class="container">
+            <div class="col-line col-xs-4">
+              <div class="line"></div>
+            </div>
+            <div class="col-line col-xs-4">
+              <div class="line"></div>
+            </div>
+            <div class="col-line col-xs-4">
+              <div class="line"></div>
+              <div class="line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/smoothscroll.js"></script>
+    <script src="../js/jquery.validate.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/jquery.stellar.min.js"></script>
+    <script src="../js/jquery.magnific-popup.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+
+    <!-- SLIDER REVOLUTION -->
+    <script src="../js/rev-slider/jquery.themepunch.tools.min.js"></script>
+    <script src="../js/rev-slider/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS   -->
+    <script src="../js/rev-slider/revolution.extension.actions.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.carousel.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.kenburn.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.layeranimation.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.migration.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.navigation.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.parallax.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.slideanims.min.js"></script>
+    <script src="../js/rev-slider/revolution.extension.video.min.js"></script>
+    <script src="../js/interface.js"></script>
+    <!-- <script>
+      const form = document.querySelector(".contact-form");
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        //submitForm function in interface.js
+        submitForm("<%=BASE_URL%>", form, "contact", "main-page");
+      };
+    </script> -->
+  </body>
+</html>

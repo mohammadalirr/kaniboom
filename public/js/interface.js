@@ -299,7 +299,7 @@
   }
 })(jQuery);
 
-const submitForm = async (form, endpoint, type) => {
+const submitForm = async (base_url, form, endpoint, type) => {
   console.log("submit run");
 
   try {
@@ -308,7 +308,7 @@ const submitForm = async (form, endpoint, type) => {
     const response = await fetch(
       //customenv
       // `https://kaniboom.liara.run/forms/${endpoint}`,
-      `http://localhost:3000/forms/${endpoint}`,
+      `${base_url}/forms/${endpoint}`,
       {
         method: "POST",
         body: formData, 

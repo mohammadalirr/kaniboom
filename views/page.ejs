@@ -81,7 +81,7 @@
               <a href="/events">رویدادها</a>
             </li>
             <li>
-              <a href="/kanicamp">کانی بوم آکادمی</a>
+              <a href="#">کانی بوم آکادمی</a>
               <ul>
                 <li>
                   <a href="/kanicamp">کانی‌کمپ</a>
@@ -143,7 +143,7 @@
               <a href="/events">رویدادها</a>
             </li>
             <li>
-              <a href="/kanicamp">کانی بوم آکادمی</a>
+              <a href="#">کانی بوم آکادمی</a>
               <ul>
                 <li>
                   <a href="/kanicamp">کانی‌کمپ</a>
@@ -184,26 +184,32 @@
         data-stellar-background-ratio="0.6"
         style="
           background-position: 50% 0px;
-          background: url(<%= BASE_URL + "/kb-api/contents/imgs/" + pageData.head[0].bg_img %>) 50% 0 no-repeat;
+          background: url(<%= BASE_URL + "/contents/imgs/" + pageData.head[0].bg_img %>) 50% 0 no-repeat;
           background-size: cover;
           "
       >
         <div class="container">
           <header class="main-header text-center">
+            <% if (pageData.head[0].date) { %>
+
             <img
-              src="<%=BASE_URL + "/kb-api/contents/imgs/" + pageData.head[0].logo_img %>"
+              src="<%=BASE_URL + "/contents/imgs/" + pageData.head[0].logo_img %>"
               style="width: 150px; margin-bottom: 30px"
             />
+            <% } else { %> <%null%> <% } %>
+
             <h1><%- pageData.head[0].html %></h1>
             <h3
               class="col-about-title text-center"
               style="direction: rtl; margin-top: 15px"
             >
+            <% if (pageData.head[0].date) { %>
               <span
                 class="text-primary"
                 style="display: block; padding-bottom: 10px"
                 ><i class="fa fa-calendar"></i> <%- pageData.head[0].date %>
               </span>
+              <% } else { %> <%null%> <% } %>
             </h3>
           </header>
         </div>
@@ -227,7 +233,7 @@
 
       <br><br><br>
 
-      <div class="content">
+      <div class="content" dir="rtl">
 
         <!-- sec-2 / summary  -->
         <% if (pageData.summary[0].html) { %>
@@ -236,12 +242,12 @@
             <div class="entry">
               <div class="col-md-6">
                 <img
-                  src="<%=BASE_URL + "/kb-api/contents/imgs/" + pageData.summary[0].img %>"
+                  src="<%=BASE_URL + "/contents/imgs/" + pageData.summary[0].img %>"
                   class="img-responsive"
                   style="margin-bottom: 10px; width: 100%"
                 />
               </div>
-              <div class="col-md-6" dir="rtl"><%- pageData.summary[0].html %></div>
+              <div class="col-md-6 text-justify" dir="rtl"><%- pageData.summary[0].html %></div>
             </div>
           </div>
         </section>
@@ -295,14 +301,21 @@
         <% if (pageData.blocks[0].title) { %>
          <% pageData.blocks.forEach((i, index) => { %>
           <section id="services" class="section courses" key="<%= index %>">
-            <header class="text-center">
-              <strong class="fade-title-left"><%- i.bg_text %></strong>
-            </header>
             <div class="container">
-              <div class="col-base bootcamp-item text-right">
-                <%- i.html %>
-              </div>
+              <header class="section-header">
+                <h2 class="section-title">
+                  <%- i.title %>
+                </h2>
+                <strong class="fade-title-left">
+                  <%- i.bg_text %>
+                </strong>
+              </header>
+              <div class="container">
+                <div class="col-base bootcamp-item text-right" dir="rtl">
+                  <%- i.html %>
+                </div>
 
+              </div>
             </div>
           </section>
          <% }) %>
@@ -323,22 +336,25 @@
                   </strong>
                 </header>
     
-                <div class="col-base col-sm-12 col-md-12">
+                <div class="col-base col-sm-12 col-md-12" style="display: flex; justify-content: center;">
                   <% i.profiles.forEach((ii, index) => { %>
                     <% if (ii.name) { %>
                     <div class="col-sm-12 col-md-4">
                       <div class="bootcamp-item text-center">
-                        <img style="width: 150px; height: 150px;" src="<%=BASE_URL + "/kb-api/contents/imgs/" + ii.img %>"/>
+                        <img style="width: 150px; height: 150px;" src="<%=BASE_URL + "/contents/imgs/" + ii.img %>"/>
                         <h4 class="text-center" style="direction: rtl">
                           <span class="text-primary" style="display: block"
                             >
                             <%= ii.name %>
-                            </span
-                          > 
-                          <%= ii.desc %>
-                          <br />
-                          <%= ii.inc %>
+                          </span> 
                         </h4>
+                            <span>
+                              <%= ii.desc %>
+                            </span>
+                            <br>
+                            <span>
+                              <%= ii.inc %>
+                            </span>
                       </div>
                     </div>
                     <% } %>
@@ -382,7 +398,7 @@
                       <li class="client">
                         <!-- <a target="_blank" href="#"> -->
                           <img
-                            src="<%=BASE_URL + "/kb-api/contents/imgs/" + ii %>"
+                            src="<%=BASE_URL + "/contents/imgs/" + ii %>"
                             style="width: <%= i.size === 'sm' ? '120px' : '400px' %>; height: <%= i.size === 'sm' ? '120px' : '275px' %>; border-radius: 10px"
                              />
                             <!--</a> -->
@@ -403,9 +419,12 @@
             <div class="container">
               <header class="section-header">
                 <h2 class="section-title">
-                  مکان برگزاری
+                  <%=pageData.location[0].title %>
                 </h2>
-                <strong class="fade-title-left">Location</strong>
+                <strong class="fade-title-left">
+                  <%=pageData.location[0].bg_text %>
+
+                </strong>
               </header>
               <div class="section-content">
                 <div class="objects">
@@ -626,7 +645,7 @@
 
       form.onsubmit = (e) => {
         e.preventDefault();
-        submitForm(form, "<%= pageData.name %>", "<%= pageData.type %>");
+        submitForm("<%=BASE_URL%>", form, "<%= pageData.name %>", "<%= pageData.type %>");
       };
     </script>
   </body>

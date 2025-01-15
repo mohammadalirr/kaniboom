@@ -14,6 +14,7 @@ import fastAuth from "./middlewares/fastAuth";
 import verifyRouter from "./routes/api/verify";
 import exportRouter from "./routes/api/exports";
 import apiContentRouter from "./routes/api/contents";
+import contentRouter from "./routes/contents"
 
 const cors = require("cors");
 const morgan = require("morgan");
@@ -125,13 +126,14 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", viewRouter);
 app.use("/forms", cors(), formRouter);
+app.use("/contents", cors(), contentRouter);
 
 // API
 app.use("/kb-api", verifyRouter);
 app.use("/kb-api/auth", authRouter);
 app.use("/kb-api/forms", fastAuth, apiFormRouter);
 app.use("/kb-api/users", fastAuth, apiUserRouter);
-app.use("/kb-api/contents", apiContentRouter);
+app.use("/kb-api/contents", fastAuth, apiContentRouter);
 app.use("/kb-api/export", fastAuth, exportRouter);
 
 app.listen(process.env.PORT, () => {

@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose, { Connection } from "mongoose";
 import Page from "../../models/contents/Page";
+import Main from "../../models/contents/Main";
 import multer from "multer";
 import { GridFSBucket } from "mongodb";
 
@@ -24,7 +25,7 @@ connection.once("open", () => {
 });
 
 /**
- * @Imgs handler
+ * @Imgs handler  
  * Post
  * Get all
  * Get by id
@@ -193,6 +194,37 @@ apiContentRouter.post("/", async (req, res: any) => {
   }
 });
 
+apiContentRouter.put("/:id", async (req, res: any) => {
+  const { id } = req.params;
+  console.log(id);
+
+  if (!id) {
+    return res.status(404).send("Id`s not exists");
+  }
+  try {
+    console.log(req.body);
+    const data = req.body;
+    await Page.findByIdAndUpdate(id, {
+      name: data.name,
+      type: data.type,
+      author: data.author,
+      head: data.head,
+      summary: data.summary,
+      blocks: data.blocks,
+      persons: data.persons,
+      gallery: data.gallery,
+      location: data.location,
+      roadmap: data.roadmap,
+      form: data.form,
+      preview: data.preview,
+    });
+    res.status(201).json({ message: "content updated successfully" });
+  } catch (err: any) {
+    console.error("Error when processing the request:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 apiContentRouter.delete("/:endpoint", async (req, res: any) => {
   const { endpoint } = req.params;
   const { id } = req.query;
@@ -225,30 +257,29 @@ apiContentRouter.delete("/:endpoint", async (req, res: any) => {
   }
 });
 
-apiContentRouter.get("/:endpoint", async (req, res: any) => {
-  const { endpoint } = req.params;
+apiContentRouter.get("/pages/all", async (req, res: any) => {
 
-  let DataModel: mongoose.Model<any>;
-  switch (endpoint) {
-    case "pages":
-      DataModel = Page;
-      break;
-    default:
-      return res.status(404).json({ error: "Invalid endpoint" }); // Return a response
+  try {
+    const pagesData = await Page.find({})
+    res.status(200).json(pagesData);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
-
+});
+apiContentRouter.get("/pages", async (req, res: any) => {
   const { page = 1, limit = 2 } = req.query; // Default values
   const limitValue = parseInt(limit as string) || 2;
   const pageValue = parseInt(page as string) || 1;
 
   try {
     const startIndex = (pageValue - 1) * limitValue;
-    const formData = await DataModel.find()
+    const formData = await Page.find()
       .limit(limitValue)
       .skip(startIndex)
       .exec();
 
-    const totalDocuments = await DataModel.countDocuments();
+    const totalDocuments = await Page.countDocuments();
     const totalPages = Math.ceil(totalDocuments / limitValue);
 
     res.status(200).json({
@@ -280,6 +311,110 @@ apiContentRouter.delete("/", async (req, res: any) => {
     });
   } catch (error) {
     console.error("Error when deleting form:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+/**
+ * @About page
+ */
+
+apiContentRouter.get("/pages/about", async (req, res: any) => {
+  try {
+    const about = await Page.findOne({ type: "about" });
+    if (about) {
+      return res.status(200).json({ disabled: true });
+    } else {
+      return res.status(200).json({ disabled: false });
+    }
+  } catch (err: any) {
+    console.error("Error processing the request:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * @Get Page details by id
+ */
+apiContentRouter.get("/pages/:pageId", async (req, res) => {
+  const { pageId } = req.params;
+  try {
+    const pageData = await Page.findById(pageId);
+    if (pageData) {
+      res.status(200).json({ data: pageData });
+    } else {
+      res.status(404).json({ error: "Page is not defined" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+/**
+ * @Post @Get @Put Main page
+ */
+
+apiContentRouter.post("/main-page", async (req, res: any) => {
+  const data = req.body.data;
+  try {
+    const content = await Main.countDocuments();
+    if (content === 0) {
+      const main_page = new Main({
+        slides: data.slides,
+        phone: data.phone,
+        email: data.email,
+        mobile: data.mobile,
+        instagram: data.instagram,
+        linkedin: data.linkedin,
+        intro: data.intro,
+        portfo_img: data.portfo_img,
+        full_address: data.full_address,
+        loc_address: data.loc_address,
+        stats: data.stats,
+      });
+      await main_page.save();
+
+      res
+        .status(201)
+        .json({ message: "Page created successfully", data: main_page });
+    } else {
+      const main_page = await Main.findOneAndUpdate(
+        { type: "main" },
+        {
+          slides: data.slides,
+          phone: data.phone,
+          email: data.email,
+          mobile: data.mobile,
+          instagram: data.instagram,
+          linkedin: data.linkedin,
+          intro: data.intro,
+          portfo_img: data.portfo_img,
+          full_address: data.full_address,
+          loc_address: data.loc_address,
+          stats: data.stats,
+        },
+        { new: true } // Ensures the updated document is returned
+      );
+
+      res
+        .status(201)
+        .json({ message: "Page updated successfully", data: main_page });
+    }
+  } catch (err: any) {
+    console.error("Error processing the request:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+apiContentRouter.get("/main-page", async (req, res) => {
+  try {
+    const data = await Main.findOne({ type: "main" });
+    if (data) {
+      res.status(200).json({ data });
+    } else {
+      res.status(404).json({ error: "Page is not defined" });
+    }
+  } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
 });

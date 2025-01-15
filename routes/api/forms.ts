@@ -55,18 +55,24 @@ apiFormRouter.get("/:endpoint", async (req, res: any) => {
       return res.status(404).json({ error: "Invalid endpoint" }); // Return a response
   }
 
-  const { page = 1, limit = 2 } = req.query; // Default values
+  const { page = 1, limit = 2, filter } = req.query; // Default values
   const limitValue = parseInt(limit as string) || 2;
   const pageValue = parseInt(page as string) || 1;
 
   try {
     const startIndex = (pageValue - 1) * limitValue;
-    const formData = await DataModel.find()
+    const formData = await DataModel.find(
+      filter !== "null" ? { page: filter } : {}
+    )
       .limit(limitValue)
       .skip(startIndex)
       .exec();
 
-    const totalDocuments = await DataModel.countDocuments();
+    console.log(formData);
+
+    const totalDocuments = await DataModel.countDocuments(
+      filter !== "null" ? { page: filter } : {}
+    );
     const totalPages = Math.ceil(totalDocuments / limitValue);
 
     res.status(200).json({
@@ -110,6 +116,9 @@ apiFormRouter.delete("/:endpoint", async (req, res: any) => {
       break;
     case "mineral": // Fixed typo
       DataModel = MineralForm;
+      break;
+    case "dynamic": // Fixed typo
+      DataModel = Form;
       break;
 
     default:

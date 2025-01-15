@@ -345,19 +345,20 @@ formRouter.post("/:page", upload.single("upload"), async (req, res: any) => {
   const file = req.file;
 console.log(type, page);
 
-  const user = await Form.findOne({
-    type,
-    page,
-    $or: [{ email }, { code }, { phone }],
-  });
+// const userify = phone || email || code  
+
+  const user = await Form.findOne(phone ? {
+    phone,
+  } : {phone: "ekjhg72f36gc"});
   if (user) {
+    console.log(user);
+    
     return res.status(409).send("چنین اطلاعاتی پیش از این ثبت شده است.");
   }
 
   try {
     let uploadId;
 
-    // بررسی وجود فایل و آپلود آن
     if (file) {
       const uploadStream = req.gfs!.openUploadStream(file.originalname, {
         contentType: file.mimetype,
@@ -381,7 +382,6 @@ console.log(type, page);
       });
     }
 
-    // ذخیره فرم در دیتابیس با در نظر گرفتن آپلود یا بدون آن
     const form = new Form({
       type,
       name,
@@ -398,7 +398,7 @@ console.log(type, page);
       history,
       more,
       page,
-      upload: uploadId, // اگر فایلی وجود نداشته باشد، مقدار null ذخیره می‌شود
+      upload: uploadId, 
     });
 
     await form.save();
@@ -408,6 +408,24 @@ console.log(type, page);
     res.status(500).send("internal server error: " + err);
   }
 });
+
+formRouter.delete("/:id", async (req, res: any) => {
+  const { id } = req.params;
+
+  try {
+    const deletedForm = await Form.findByIdAndDelete(id);
+
+    if (!deletedForm) {
+      return res.status(404).send("فرم مورد نظر یافت نشد.");
+    }
+
+    res.status(200).send("فرم با موفقیت حذف شد.");
+  } catch (err) {
+    console.error("Error deleting form:", err);
+    res.status(500).send("خطا در حذف فرم.");
+  }
+});
+
 
 
 export default formRouter;

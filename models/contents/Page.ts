@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IPage extends Document {
-  type: "events" | "news" | "kanicamps" | "bootcamps" | "startups" | string;
+  type: "events" | "news" | "kanicamps" | "boomcamps" | "startups" | string;
   name: string;
   author: string;
   head: {
@@ -17,6 +17,7 @@ export interface IPage extends Document {
     is_manual: boolean;
   }[];
   blocks: {
+    title: string;
     html: string;
     is_manual: boolean;
     bg_text: string;
@@ -33,9 +34,11 @@ export interface IPage extends Document {
     bg_text: string;
   }[];
   location: {
+    title: string;
     city: string;
     desc: string;
     coord: { x: number; y: number };
+    bg_text: string;
   }[];
   roadmap: {
     title: string;
@@ -62,7 +65,7 @@ const eventSchema = new Schema<IPage>(
     author: { type: String, required: true },
     head: [
       {
-        logo_img: String, // Store as string path/URL
+        logo_img: String, 
         bg_img: String,
         html: String,
         date: String,
@@ -71,13 +74,14 @@ const eventSchema = new Schema<IPage>(
     ],
     summary: [
       {
-        img: String, // Store as string path/URL
+        img: String, 
         html: String,
         is_manual: Boolean,
       },
     ],
     blocks: [
       {
+        title: String,
         html: String,
         is_manual: Boolean,
         bg_text: String,
@@ -107,12 +111,14 @@ const eventSchema = new Schema<IPage>(
     ],
     location: [
       {
+        title: String,
         city: String,
         desc: String,
         coord: {
           x: Number,
           y: Number,
         },
+        bg_text: String,
       },
     ],
     roadmap: [

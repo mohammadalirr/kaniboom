@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 import XLSX from "xlsx";
 import SadafForm from "../../models/forms/Sadaf";
 import MineralForm from "../../models/forms/Mineral";
+import Form from "../../models/forms/Form";
 
 const exportRouter = express.Router();
 
@@ -36,6 +37,9 @@ exportRouter.get("/:endpoint", async (req, res: any) => {
       break;
     case "mineral": // Fixed typo
       DataModel = MineralForm;
+      break;
+    case "dynamic": // Fixed typo
+      DataModel = Form;
       break;
 
     default:
